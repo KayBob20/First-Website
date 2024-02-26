@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Page</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Heading -->
+    <header class="article-header">
+        <h1>Silly Critters</h1>
+        <p>By Kaya Bobo | Feb 14 2024</p>
+    </header>
+    <header>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="article.html">Article</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+<!-- End of Heading -->
+
+<!-- Main content section -->
+
+<main class="article-content">
+    <!-- Section 1-->
+
+    <section>
+        <div class="image-container">
+            <img src="images/Kev.png" alt="Image" class="preview-image">
+   </div>
+        <h2>Local Boy Found Dead</h2>
+        <p>It is unkown of the exact cause of death but suspects insist it is nothing to worry about. As seen in previous photos of the boy, his skin looked pink and healthy. What was then a bright and happy young man is now seen with sickly, desaturated skin and glazed over eyes. He still manages the day by day despite being considered dead.</p>
+        <p>Will this zombie threaten our world?</p>
+<br>    
+<br>    
+<div class="image-container"><img src="https://f2.toyhou.se/file/f2-toyhou-se/images/57131955_BHVl2p6jpZdkrBt.png"></div>
+        <h2>Woman Lives for over 1000 Years!</h2>
+        <p>A women has revealed to be hundreds of years old but is she to be believed? No animal of her kind has ever survived this long. When questions she seemed absolutely sure of herself, quote:</p>
+        <p>"I could never tell a lie."</p>
+        <p>Her family and friends have confirmed that she is telling the truth. The women would not reveal any kind of birth certificate saying that those didn't exist 1000 years ago.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </section>
+
+    <!-- Section 1 end -->
+    
+    <!-- Add additional sections as needed -->
+
+    <!-- Sidebar time -->
+
+<aside class="sidebar">
+    <section class="advertisement">
+        <h3>Adopt a Unicorn!</h3>
+        <div class="photo"><img src="images/Unicorn.png" alt="alt text"></div>
+        <p>Find your perfect mythical creature today.</p>
+    </section>
+</aside>
+
+<!-- Sidebar time is over :'( -->
+
+</main>
+<!-- Main content section end -->
+<!-- Javascript -->
+
+<script>
+    document.querySelector('.hamburger').addEventListener('click', function() {
+    document.querySelector('nav ul').classList.toggle('active');
+});
+
+document.addEventListener('scroll', function() {
+        var nav = document.querySelector('nav');
+        var advertisement = document.querySelector('.advertisement');
+
+        advertisement.style.top = (nav.offsetTop + nav.offsetHeight + 20) + 'px';
+    
+    });
+
+    const previewImage = document.querySelector('.preview-image');
+
+
+previewImage.addEventListener('click', function() {
+   // Toggle 'enlarged' class on click
+   this.classList.toggle('enlarged');
+
+   // Prevent scrolling when enlarged
+   document.body.classList.toggle('no-scroll');
+
+});
+
+
+</script>
+
+<!-- Javascript End -->
+</body>
+</html>

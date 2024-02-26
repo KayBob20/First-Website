@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Heading -->
+
+    <header>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="article.html">Article</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Heading End -->
+
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slides">
+                <img src="images/Dragon.png" alt="Image 1">
+                <img src="images/Kev.png" alt="Image 2">
+                <img src="images/Red guy.png" alt="Image 3">
+
+            </div>
+            <div class="thumbnails"></div>
+        </div>
+    </div>
+<!-- Navigation End-->
+<!-- Javascript -->
+
+<script>
+    document.querySelector('.hamburger').addEventListener('click', function() {
+        document.querySelector('nav ul').classList.toggle('active');
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const slides = document.querySelectorAll('.slides img');
+        const thumbnailsContainer = document.querySelector('.thumbnails');
+        const slideInterval = 2000; // Interval time in milliseconds (3 seconds in this example)
+        let slideIndex = 0; // Current slide index
+        let slideIntervalId; // Variable to store the interval ID
+
+        // Function to create thumbnails
+        slides.forEach((slide, index) => {
+            // Create thumbnail
+            const thumbnail = document.createElement('img');
+            thumbnail.src = slide.src;
+            thumbnail.alt = `Thumbnail ${index + 1}`;
+            thumbnail.addEventListener('click', () => {
+                goToSlide(index);
+            }); //
+            thumbnailsContainer.appendChild(thumbnail);
+        });
+
+        // Highlight the initial active thumbnail
+        thumbnailsContainer.children[slideIndex].classList.add('active-thumbnail');
+
+        // Function to transition to next slide
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % slides.length;
+            goToSlide(slideIndex);
+        }
+
+        // Set interval for automatic slide transition
+        slideIntervalId = setInterval(nextSlide, slideInterval);
+
+        // Stop automatic slide transition when user hovers over thumbnails
+        thumbnailsContainer.addEventListener('mouseover', () => {
+            clearInterval(slideIntervalId);
+        });
+
+        // Resume automatic slide transition when user moves mouse out of thumbnails
+        thumbnailsContainer.addEventListener('mouseout', () => {
+            slideIntervalId = setInterval(nextSlide, slideInterval); // Reassign the interval ID
+        });
+
+        // Function to go to a specific slide
+        function goToSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.transform = `translateX(-${index * 100}%)`;
+            });
+
+            // Remove active class from all thumbnails
+            thumbnailsContainer.querySelectorAll('img').forEach(thumbnail => {
+                thumbnail.classList.remove('active-thumbnail');
+            });
+
+            // Add active class to the current thumbnail
+            thumbnailsContainer.children[index].classList.add('active-thumbnail');
+
+            slideIndex = index;
+        }
+    });
+</script>
+
+
+<!-- Javascript End -->
+</body>
+</html>
